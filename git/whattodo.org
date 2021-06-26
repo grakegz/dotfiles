@@ -1,0 +1,4 @@
+* TODO put a .gitconfig file here that includes your name and email adress
+[user]
+	email = myawesomeemail@adress.whereever
+	name = myawesomename
