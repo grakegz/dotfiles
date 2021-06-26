@@ -1,1 +1,1 @@
-# Yet anohter dotfile repository
+# Yet another dotfile repository
