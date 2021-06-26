@@ -1,1 +1,0 @@
-# Yet another dotfile repository
