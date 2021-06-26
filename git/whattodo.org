@@ -1,8 +1,8 @@
 ToDo
-- Put a .gitconfig file here that includes your name and email adress like in this example:
+- Put a .gitconfig file here that includes your name and email address like in this example:
 
 #+BEGIN_SRC
 [user]
-    email = myawesomeemail@adress.whereever
+    email = myawesomeemail@address.whereever
     name = myawesomename
 #+END_SRC
