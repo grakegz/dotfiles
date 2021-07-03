@@ -98,6 +98,13 @@
   :config
   (setq org-startup-indented t))
 
+;; Let's try a fancy Dashboard to get an overview
+;; everytime we start emacs
+(use-package dashboard
+  :ensure t
+  :config
+  (dashboard-setup-startup-hook))
+
 ;; Some personal keybindings
 (global-set-key (kbd "<M-s-up>") 'shrink-window)
 (global-set-key (kbd "<M-s-down>") 'enlarge-window)
@@ -109,3 +116,16 @@
 
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(which-key use-package twilight-bright-theme twilight-anti-bright-theme try org olivetti magit doom-themes doom-modeline dashboard)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
