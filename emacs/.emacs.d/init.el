@@ -21,7 +21,7 @@
 
 ;; Set default font
 (when (member "Roboto Mono" (font-family-list))
-  (set-frame-font "Roboto Mono-10" t t))
+  (set-frame-font "Roboto Mono-11" t t))
 
 ;; Some GUI settings I like
 (tool-bar-mode -1)
