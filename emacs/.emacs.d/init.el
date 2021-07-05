@@ -105,6 +105,11 @@
   :config
   (dashboard-setup-startup-hook))
 
+;; A handy code formatter for elisp
+;; I tried format-all but it didn't do anything to my elisp code?
+(use-package elisp-format
+  :ensure t)
+
 ;; Some personal keybindings
 (global-set-key (kbd "<M-s-up>") 'shrink-window)
 (global-set-key (kbd "<M-s-down>") 'enlarge-window)
