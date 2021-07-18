@@ -32,7 +32,9 @@
 (size-indication-mode t)       ; show size of current file in modeline
 (setq visible-bell t)          ; stop that beeping
 (setq backup-directory-alist   ; set default directory to keep all autosave files
-          `(("." . ,(concat user-emacs-directory "backups"))))
+      `(("." . ,(concat user-emacs-directory "backups"))))
+;; I want to start my weeks in the calendar with Monday (default is Sunday)
+(setq calendar-week-start-day 1)
 
 ;; Try out packages without the need
 ;; to installed them.
@@ -98,6 +100,17 @@
   :config
   (setq org-startup-indented t))
 
+(require 'org-tempo)  ;; to bring back easy templates using <s or <n
+
+;; Set languages that can be evaluated in org-mode code blocks
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (emacs-lisp . t)
+   (shell . t)
+   (org . t)
+   ))
+
 ;; Let's try a fancy Dashboard to get an overview
 ;; everytime we start emacs
 (use-package dashboard
@@ -126,8 +139,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files nil)
  '(package-selected-packages
-   '(which-key use-package twilight-bright-theme twilight-anti-bright-theme try org olivetti magit doom-themes doom-modeline dashboard)))
+   '(org-tempo which-key use-package twilight-bright-theme twilight-anti-bright-theme try org olivetti magit doom-themes doom-modeline dashboard)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
