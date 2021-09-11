@@ -24,6 +24,13 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;; Configure flyspell in text-mode buffer and buffers derived from it.
+;; But disable it for log-edit-mode and change-log-mode.
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+(dolist (hook '(change-log-mode-hook log-edit-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode -1))))
+
 ;; Bootstrap straight.el to use as package manager
 
 (defvar bootstrap-version)
@@ -55,7 +62,12 @@
 
 (use-package twilight-anti-bright-theme
   :straight t
-  :config (load-theme 'twilight-anti-bright t))
+  ;; :config (load-theme 'twilight-anti-bright t)
+  )
+
+;; Enable a theme for now
+;; TODO: replace this with a toggle function to quickly change themes (dark to bright or vice versa)
+(enable-theme 'twilight-anti-bright)
 
 ;; Show available shortcuts after pressing C-x or C-c
 (use-package which-key
@@ -76,12 +88,12 @@
   :config (setq org-startup-indented t))
 
 ;; Set languages that can be evaluated in org-mode code blocks
-;; (org-babel-do-load-languages
-;;  'org-babel-load-languages
-;;  '((python . t)
-;;    (emacs-lisp .t)
-;;    (shell . t)
-;;    (org . t)))
+(org-babel-do-load-languages
+  'org-babel-load-languages
+  '((python . t)
+    (emacs-lisp .t)
+    (shell . t)
+    (org . t)))
 
 ;; Let's try a fancy Dashboard to get an overview
 ;; everytime we start emacs
@@ -95,7 +107,7 @@
   :straight t
   :custom
   (company-minimum-prefix-length 3)
-  (company-idle-delay 3.0)
+  (company-idle-delay 1.0)
   :hook (prog-mode . company-mode))
 
 ;; Some personal keybindings
