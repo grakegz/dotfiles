@@ -91,6 +91,13 @@
   :straight t
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package paredit
+  :straight t)
+
+;; Olivetti to center text in buffer if needed
+(use-package olivetti
+  :straight t)
+
 ;; get latest org mode
 (use-package org
   :straight t
@@ -119,7 +126,23 @@
   (company-idle-delay 1.0)
   :hook (prog-mode . company-mode))
 
+;; Popup frame at point, needed by go-translate
+(use-package posframe
+  :straight t)
+
+;; Google Translate service in Emacs buffer
+;; Need to read: https://github.com/lorniu/go-translate
+(use-package go-translate
+  :straight t
+  :config
+  (setq go-translate-token-current (cons 430675 2721866130))
+  (setq go-translate-local-language "en")
+  (setq go-translate-target-language "de")
+  (setq go-translate-buffer-follow-p t))
+
 ;; Some personal keybindings
+(global-set-key "\C-cT" 'go-translate)
+(global-set-key "\C-ct" 'go-translate-popup)
 (global-set-key (kbd "<M-s-up>") 'shrink-window)
 (global-set-key (kbd "<M-s-down>") 'enlarge-window)
 (global-set-key (kbd "<M-s-left>") 'shrink-window-horizontally)
