@@ -1,3 +1,8 @@
+(require 'package)
+(add-to-list 'package-archives
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
 (setq package-enable-at-startup nil)
 
 ;; Set default font
@@ -7,6 +12,7 @@
 ;; Some GUI settings I like
 (setq inhibit-startup-message t)  ;; don't show the default welcome screen
 (tool-bar-mode -1)
+;; (setq cursor-type 'hbar)
 (blink-cursor-mode 0)
 (scroll-bar-mode -1)
 (set-fringe-mode 10)
@@ -65,9 +71,12 @@
   ;; :config (load-theme 'twilight-anti-bright t)
   )
 
+(use-package leuven-theme
+  :straight t)
+
 ;; Enable a theme for now
 ;; TODO: replace this with a toggle function to quickly change themes (dark to bright or vice versa)
-(enable-theme 'twilight-anti-bright)
+(load-theme 'leuven-dark t)
 
 ;; Show available shortcuts after pressing C-x or C-c
 (use-package which-key
