@@ -6,8 +6,12 @@
 (setq package-enable-at-startup nil)
 
 ;; Set default font
-(when (member "Fira Code" (font-family-list))
-  (set-frame-font "Fira Code-11" t t))
+(when (member "DejaVu Sans Mono" (font-family-list))
+  (set-frame-font "DejaVu Sans Mono-10" t t))
+
+;; Some more spacing between the lines for better reading experience.
+;; Have to find the sweetspot in the next couple of weeks. 2-4 seems kind of good.
+(setq-default line-spacing 2)
 
 ;; Some GUI settings I like
 (setq inhibit-startup-message t)  ;; don't show the default welcome screen
@@ -18,6 +22,14 @@
 (set-fringe-mode 10)
 (size-indication-mode t)          ;; show size of current file in modeline
 (setq visible-bell t)             ;; stop that beeping
+
+;; Start emacs in fullscreen mode
+;; (custom-set-variables
+;;  '(initial-frame-alist (quote ((fullscreen . maximized)))))
+
+;; Little bit of transparancy for the emacs gui window :)
+;; (set-frame-parameter (selected-frame) 'alpha '(90 . 50))
+;; (add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
 ;; set default directory to keep all autosave files (don't know if this is really working as expected)
 (setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
@@ -76,7 +88,8 @@
 
 ;; Enable a theme for now
 ;; TODO: replace this with a toggle function to quickly change themes (dark to bright or vice versa)
-(load-theme 'leuven-dark t)
+;; (load-theme 'minimal t)
+(load-theme 'twilight-anti-bright t)
 
 ;; Show available shortcuts after pressing C-x or C-c
 (use-package which-key
@@ -96,12 +109,21 @@
 
 ;; Olivetti to center text in buffer if needed
 (use-package olivetti
-  :straight t)
+  :straight t
+  :init
+  (setq olivetti-body-width 100))
 
 ;; get latest org mode
 (use-package org
   :straight t
   :config (setq org-startup-indented t))
+
+;; Want to replace the standard folded character sequence ... in orgmode
+;; For that I have to set the org-ellipsis variable like:
+;; - from standard (setq org-ellipsis "...")
+;; - to (setq org-ellipsis "⤵")
+;; ▼ ↘ ⤵ ↴ ↷ ⇊ ⇓ ⇘ ⤸ ⤼ ⬎ ↓
+(setq org-ellipsis "⤵")
 
 ;; Set languages that can be evaluated in org-mode code blocks
 (org-babel-do-load-languages
@@ -111,12 +133,18 @@
     (shell . t)
     (org . t)))
 
-;; Let's try a fancy Dashboard to get an overview
-;; everytime we start emacs
-;; (use-package dashboard
-;;   :ensure t
-;;   :config
-;;   (dashboard-setup-startup-hook))
+;; I don't want to confirm every time I execute a elisp code block in orgmode
+(defun my-org-confirm-babel-evaluate (lang body)
+  (not (string= lang "emacs-lisp")))
+(setq org-confirm-babel-evaluate #'my-org-confirm-babel-evaluate)
+
+;; Nice bullets
+(use-package org-superstar
+  :straight t
+  :config
+  (setq org-superstart-special-todo-items t)
+  (add-hook 'org-mode-hook (lambda ()
+			     (org-superstar-mode 1))))
 
 ;; Completion framework
 (use-package company
