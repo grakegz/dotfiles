@@ -16,6 +16,7 @@
 ;; Some GUI settings I like
 (setq inhibit-startup-message t)  ;; don't show the default welcome screen
 (tool-bar-mode -1)
+;; (menu-bar-mode -1)
 ;; (setq cursor-type 'hbar)
 (blink-cursor-mode 0)
 (scroll-bar-mode -1)
@@ -92,6 +93,11 @@
 ;; (load-theme 'minimal t)
 (load-theme 'twilight-anti-bright t)
 
+;; Try out vertical mode for ido. I think I'll like it better than the horizontal presentation.
+(use-package ido-vertical-mode
+  :straight t
+  :config (ido-vertical-mode 1))
+
 ;; Show available shortcuts after pressing C-x or C-c
 (use-package which-key
   :straight t
@@ -124,7 +130,6 @@
 ;; - from standard (setq org-ellipsis "...")
 ;; - to (setq org-ellipsis "⤵")
 ;; ▼ ↘ ⤵ ↴ ↷ ⇊ ⇓ ⇘ ⤸ ⤼ ⬎ ↓
-(setq org-ellipsis "⤵")
 
 ;; Set languages that can be evaluated in org-mode code blocks
 (org-babel-do-load-languages
@@ -191,15 +196,15 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:inherit outline-8 :extend nil :height 1.5))))
- '(org-document-info ((t (:inherit org-document-info :extend nil :height 1.2))))
- '(org-document-info-keyword ((t (:inherit org-document-info-keyword :extend nil :height 1.2))))
- '(org-level-1 ((t (:inherit outline-1 :extend nil :height 1.5))))
- '(org-level-2 ((t (:inherit outline-2 :extend nil :height 1.4))))
- '(org-level-3 ((t (:inherit outline-3 :extend nil :height 1.3))))
- '(org-level-4 ((t (:inherit outline-4 :extend nil :height 1.2))))
- '(org-level-5 ((t (:inherit outline-5 :extend nil :height 1.1))))
- '(org-level-6 ((t (:inherit outline-6 :extend nil :height 1.0))))
- '(org-level-7 ((t (:inherit outline-7 :extend nil :height 1.0))))
- '(org-level-8 ((t (:inherit outline-8 :extend nil :height 1.0))))
+ ;; '(org-document-title ((t (:inherit outline-8 :extend nil :height 1.5))))
+ ;; '(org-document-info ((t (:inherit org-document-info :extend nil :height 1.2))))
+ ;; '(org-document-info-keyword ((t (:inherit org-document-info-keyword :extend nil :height 1.2))))
+ ;; '(org-level-1 ((t (:inherit outline-1 :extend nil :height 1.3))))
+ ;; '(org-level-2 ((t (:inherit outline-2 :extend nil :height 1.2))))
+ ;; '(org-level-3 ((t (:inherit outline-3 :extend nil :height 1.1))))
+ ;; '(org-level-4 ((t (:inherit outline-4 :extend nil :height 1.0))))
+ ;; '(org-level-5 ((t (:inherit outline-5 :extend nil :height 1.0))))
+ ;; '(org-level-6 ((t (:inherit outline-6 :extend nil :height 1.0))))
+ ;; '(org-level-7 ((t (:inherit outline-7 :extend nil :height 1.0))))
+ ;; '(org-level-8 ((t (:inherit outline-8 :extend nil :height 1.0))))
 )
