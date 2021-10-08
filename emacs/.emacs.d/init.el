@@ -7,7 +7,7 @@
 
 ;; Set default font
 (when (member "DejaVu Sans Mono" (font-family-list))
-  (set-frame-font "DejaVu Sans Mono-10" t t))
+  (set-frame-font "DejaVu Sans Mono-11" t t))
 
 ;; Some more spacing between the lines for better reading experience.
 ;; Have to find the sweetspot in the next couple of weeks. 2-4 seems kind of good.
@@ -16,7 +16,7 @@
 ;; Some GUI settings I like
 (setq inhibit-startup-message t)  ;; don't show the default welcome screen
 (tool-bar-mode -1)
-;; (menu-bar-mode -1)
+(menu-bar-mode -1)
 ;; (setq cursor-type 'hbar)
 (blink-cursor-mode 0)
 (scroll-bar-mode -1)
